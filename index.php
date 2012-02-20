@@ -4,9 +4,9 @@ set_time_limit(0);
 // replaces non-alphanumeric characters with optional non-alphanumeric match, and inserts optional non-alphanumeric match between numbers and letters
 function prepareRegex($str) {
 	return preg_replace('/([a-z])(\d)/i', '$1[^a-z\d]*$2',
-				 preg_replace('/(\d)([a-z])/i', '$1[^a-z\d]*$2',
-				 preg_replace('/[^a-z\d]+/i', '[^a-z\d]*',
-				 $str)));
+	       preg_replace('/(\d)([a-z])/i', '$1[^a-z\d]*$2',
+	       preg_replace('/[^a-z\d]+/i', '[^a-z\d]*',
+	       $str)));
 }
 
 // make regex string with word boundaries
