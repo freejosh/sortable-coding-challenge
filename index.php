@@ -1,11 +1,11 @@
 <?php
 set_time_limit(0);
 
-// replaces non-word characters with optional non-word match, and inserts optional non-word match between numbers and letters
+// replaces non-alphanumeric characters with optional non-alphanumeric match, and inserts optional non-alphanumeric match between numbers and letters
 function prepareRegex($str) {
-	return preg_replace('/([a-z])([0-9])/i', '$1\W?$2',
-				 preg_replace('/([0-9])([a-z])/i', '$1\W?$2',
-				 preg_replace('/\W/', '\W?',
+	return preg_replace('/([a-z])(\d)/i', '$1[^a-z\d]*$2',
+				 preg_replace('/(\d)([a-z])/i', '$1[^a-z\d]*$2',
+				 preg_replace('/[^a-z\d]+/i', '[^a-z\d]*',
 				 $str)));
 }
 
